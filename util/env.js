@@ -8,5 +8,6 @@ module.exports = {
     TWITCH_OAUTH: process.env.TWITCH_OAUTH,
     TWITCH_BOT_NAME: process.env.TWITCH_BOT_NAME,
     TWITCH_CHANNEL: process.env.TWITCH_CHANNEL,
-    COMMAND_PREFIX: process.env.COMMAND_PREFIX || '!'
+    COMMAND_PREFIX: process.env.COMMAND_PREFIX || '!',
+    STREAMCOMPANION_PATH: process.env.STREAMCOMPANION_PATH
 };

@@ -1,8 +1,17 @@
-const { twitchBot } = require('../../index');
+const { twitchBot, osuApi, banchoClient } = require('../../index');
 const { COMMAND_PREFIX } = require('../../util/env');
+const parseBeatmapURL = require('../../util/functions/parseBeatmap');
+const { sendBeatmap } = require('../../util/functions/sendBeatmap');
 
-module.exports = (channel, tags, message, self) => {
+module.exports = async (channel, tags, message, self) => {
 	if(self) return;
+
+    if (message.startsWith('https://osu.ppy.sh/')) {
+        let beatmap = await parseBeatmapURL(osuApi, message.split(' ')[0]);
+        if (beatmap === 1) return;
+        if (beatmap?.message) return;
+        sendBeatmap(banchoClient, beatmap, tags.username);
+    }
 
     if (!message.startsWith(COMMAND_PREFIX)) return;
 
