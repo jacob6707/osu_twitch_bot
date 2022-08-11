@@ -1,7 +1,7 @@
 const tmi = require('tmi.js');
 const bjs = require('bancho.js');
 const osu = require('node-osu');
-const { BANCHO_USER, BANCHO_PASS, BANCHO_APIKEY, API_PORT } = require('./util/env');
+const { BANCHO_USER, BANCHO_PASS, BANCHO_APIKEY } = require('./util/env');
 
 const banchoClient = new bjs.BanchoClient({ username: BANCHO_USER, password: BANCHO_PASS, apiKey: BANCHO_APIKEY });
 const osuApi = new osu.Api(BANCHO_APIKEY);
