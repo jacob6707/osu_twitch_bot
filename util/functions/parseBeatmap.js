@@ -1,5 +1,3 @@
-const e = require("express");
-
 async function parseBeatmapURL(osuApi, link) {
     const url = new URL(link);
     if (url.host !== 'osu.ppy.sh') return 1;
