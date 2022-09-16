@@ -1,3 +1,5 @@
+const { REQUESTS_USER } = require('../env');
+
 function convertToReadableTime(s) {
     const minutes = Math.floor(s / 60);
     const seconds = s % 60;
@@ -18,7 +20,7 @@ function sendBeatmap(client, map, username) {
     const song = `${map.artist} - ${map.title}`;
     const star = parseFloat(map.difficulty.rating).toFixed(2);
     const length = convertToReadableTime(map.length.total);
-    return client.getSelf().sendMessage(`[${link} ${song} [${map.version}]] mapped by: ${map.creator} (${map.approvalStatus}) | ☆${star} ⌛${length} ${map.bpm}BPM | Sent by ${username}`).catch(console.error);
+    return client.getUser(REQUESTS_USER).sendMessage(`[${link} ${song} [${map.version}]] mapped by: ${map.creator} (${map.approvalStatus}) | ☆${star} ⌛${length} ${map.bpm}BPM | Sent by ${username}`).catch(console.error);
 }
 
 module.exports = {convertToReadableTime, padNumber, sendBeatmap}
