@@ -5,8 +5,10 @@ module.exports = {
     name: 'nppp',
     usage: `${COMMAND_PREFIX}nppp`,
     execute: async (client, channel, tags, message, self, args) => {
-        const file = fs.readFileSync(`${STREAMCOMPANION_PATH}\\nppp.txt`, {encoding: 'utf-8'});
-        if (file.length<1) return;
-        client.say(channel, `@${tags.username}, ${file}`);
+        if (fs.existsSync(`${STREAMCOMPANION_PATH}/nppp.txt`)) {
+            const file = fs.readFileSync(`${STREAMCOMPANION_PATH}/nppp.txt`, {encoding: 'utf-8'});
+            if (file.length<1) return;
+            client.say(channel, `@${tags.username}, ${file}`);
+        }
     }
 }

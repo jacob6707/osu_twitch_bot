@@ -5,8 +5,10 @@ module.exports = {
     name: 'np',
     usage: `${COMMAND_PREFIX}np`,
     execute: async (client, channel, tags, message, self, args) => {
-        const file = fs.readFileSync(`${STREAMCOMPANION_PATH}\\np_playing_DL.txt`, {encoding: 'utf-8'});
-        if (file.length<1) return;
-        client.say(channel, `@${tags.username}, ${file}`);
+        if (fs.existsSync(`${STREAMCOMPANION_PATH}/np.txt`)) {
+            const file = fs.readFileSync(`${STREAMCOMPANION_PATH}\\np.txt`, {encoding: 'utf-8'});
+            if (file.length<1) return;
+            client.say(channel, `@${tags.username}, ${file}`);
+        }
     }
 }
